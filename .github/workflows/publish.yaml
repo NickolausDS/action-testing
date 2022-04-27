@@ -13,11 +13,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Publish to Registry
       run: echo "${{ github.event.release.tag_name }}"
-      # uses: elgohr/Publish-Docker-Github-Action@v4
-      # with:
-      #   name: nsglobusautobuilds/single-user-server-test
-      #   username: ${{ secrets.DOCKER_USERNAME }}
-      #   password: ${{ secrets.DOCKER_PASSWORD }}
-      #   tags: "latest,${{ github.event.release.tag_name }}"
-      #   workdir: jupyter.demo.globus.org/single-user
-
+      uses: elgohr/Publish-Docker-Github-Action@v4
+      with:
+        name: nsglobusautobuilds/publish-test
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        tags: "latest,${{ github.event.release.tag_name }}"
+        workdir: single-user
